@@ -49,6 +49,33 @@ sudo systemctrl start birdhouse.service
 sudo systemctrl status birdhouse.service
 ```
 
+### DNS Update via CRON
+
+Run `crontab -e` and append the following line to run the dns update script every 5 minutes:
+
+```
+*/5 * * * * ~/raspivid-birdhouse/duckdns.sh >/dev/null 2>&1
+```
+
+### Disable Password Login For IPV6 SSH
+
+Edit `/etc/ssh/sshd_conf` and add:
+
+```
+Match Address 0.0.0.0/0
+	AddressFamily inet
+	PasswordAuthentication yes
+
+Match Address ::/0
+    AddressFamily inet6
+    PasswordAuthentication no
+```
+
+### Stream Youtube
+
+To stream to a live youtube token, use `stream.sh` or install the `stream.service` systemd service.  
+Make sure to change your stream token in the `stream.sh` file.
+
 ## Credits
 
 - Forked from [Richardn2002/raspivid-broadcaster](https://github.com/Richardn2002/raspivid-broadcaster)

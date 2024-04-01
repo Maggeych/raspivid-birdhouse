@@ -1,0 +1,12 @@
+[Unit]
+Description=Birdhouse Live Stream
+After=network.target
+
+[Service]
+ExecStart=/home/pi/raspivid-birdhouse/stream.sh
+User=pi
+Nice=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

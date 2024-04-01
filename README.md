@@ -57,18 +57,16 @@ Run `crontab -e` and append the following line to run the dns update script ever
 */5 * * * * ~/raspivid-birdhouse/duckdns.sh >/dev/null 2>&1
 ```
 
-### Disable Password Login For IPV6 SSH
+### Allow Password SSH Login Only For Local Connections
 
 Edit `/etc/ssh/sshd_conf` and add:
 
 ```
-Match Address 0.0.0.0/0
-	AddressFamily inet
-	PasswordAuthentication yes
+PasswordAuthentication no
+ChallengeResponseAuthentication no
 
-Match Address ::/0
-    AddressFamily inet6
-    PasswordAuthentication no
+Match Address 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+    PasswordAuthentication yes
 ```
 
 ### Stream Youtube

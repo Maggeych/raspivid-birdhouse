@@ -1,0 +1,10 @@
+[Unit]
+Description=Start Night Stream
+
+[Timer]
+OnCalendar=*-*-* 20:00:00
+Unit=stream-night.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Birdhouse Live Stream
+After=network.target
+Conflicts=stream-day.service
+
+[Service]
+ExecStart=/home/pi/raspivid-birdhouse/stream-night.sh
+User=pi
+Nice=10

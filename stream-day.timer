@@ -1,0 +1,10 @@
+[Unit]
+Description=Start Day Stream
+
+[Timer]
+OnCalendar=*-*-* 7:00:00
+Unit=stream-day.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target
